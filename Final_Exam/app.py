@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -9,6 +10,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+
+# Ensure sibling modules (energy_pipeline.py) are importable when the app is
+# launched from a different working directory, e.g. on Streamlit Cloud.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from energy_pipeline import load_and_clean_data
 
